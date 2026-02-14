@@ -1,6 +1,9 @@
 import { Type } from '@sinclair/typebox';
 import { spawn } from 'node:child_process';
 
+// Prefer a stable plugin id (over package-derived ids).
+export const id = 'dotkc';
+
 function runDotkc({ dotkcBin, args, stdinText }) {
   return new Promise((resolve) => {
     const p = spawn(dotkcBin, args, {
