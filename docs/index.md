@@ -3,9 +3,13 @@ title: dotkc OpenClaw Plugin
 ---
 
 <div class="badges">
-  <a href="https://github.com/steven-zhc/openclaw-plugin-dotkc"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-repo-181717"></a>
   <a href="https://dotkc.hczhang.com/"><img alt="dotkc" src="https://img.shields.io/badge/dotkc-manual-2d6cdf"></a>
+  <a href="https://github.com/steven-zhc/openclaw-plugin-dotkc"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-repo-181717"></a>
   <a href="https://docs.openclaw.ai/tools/plugin"><img alt="OpenClaw plugins" src="https://img.shields.io/badge/OpenClaw-plugins-docs-ff5a2d"></a>
+</div>
+
+<div class="callout">
+<strong>Start here:</strong> dotkc manual + best practices → <a href="https://dotkc.hczhang.com/"><strong>dotkc.hczhang.com</strong></a>
 </div>
 
 # dotkc OpenClaw Plugin (L2)
