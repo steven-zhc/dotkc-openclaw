@@ -49,6 +49,8 @@ openclaw gateway restart
 
 ## Security stance
 
+Required on OpenClaw hosts: set `DOTKC_NO_LEAK=1` (enforces no-leak mode: blocks `dotkc get` and `--unsafe-values`).
+
 - This plugin is designed to **avoid secrets entering model context**.
 - `dotkc_inspect` uses `dotkc run --openclaw` and is expected to be **redacted**.
 - Do not enable `allowUnsafe` unless you fully understand the leakage risk.

@@ -132,6 +132,10 @@ Intended for **redacted** sanity checks.
 Design workflows so secrets are injected into child processes, not displayed.
 </div>
 
+<div class="callout">
+<strong>Required for OpenClaw hosts:</strong> set <code>DOTKC_NO_LEAK=1</code> in the Gateway environment. This makes dotkc refuse operations that would print raw secret values.
+</div>
+
 ## Troubleshooting
 
 ### “dotkc not found”
