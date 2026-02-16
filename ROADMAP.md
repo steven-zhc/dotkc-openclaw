@@ -1,6 +1,6 @@
-# openclaw-plugin-dotkc roadmap (L2)
+# dotkc-openclaw roadmap (L2)
 
-This roadmap focuses on the **OpenClaw plugin** (typed tools + policy + safe responses).
+This roadmap focuses on the **OpenClaw plugin for dotkc** (typed tools + policy + safe responses).
 
 ## Principles
 
@@ -8,9 +8,16 @@ This roadmap focuses on the **OpenClaw plugin** (typed tools + policy + safe res
 - Plugin is **fail-closed** on suspected leakage.
 - Default stance: **never return secrets to the model**.
 
-## P0 — Safety guardrails
+## P0 — Safety guardrails (agent-safe by default)
+
+### 0) Defensive redaction
+**Status:** ✅ shipped
+
+- Redact obvious value-bearing fields before returning tool output to the model (`env`, `value`, `token`, `apiKey`, etc.)
 
 ### 1) Leak detection + fail-closed (in addition to redaction)
+**Status:** ⬜ not yet
+
 **Goal:** even if dotkc (or an integration) accidentally emits plaintext, do not return it to the LLM.
 
 Add a detector pass on tool output before returning:
@@ -66,5 +73,10 @@ Policies:
 ## P3 — Distribution
 
 ### 8) Publish to npm
-- `openclaw plugins install @hcz/openclaw-plugin-dotkc`
+**Status:** 🟡 in progress
+
+- Package name: `dotkc-openclaw`
+- Target install: `openclaw plugins install dotkc-openclaw@<version>`
 - Versioning + release notes
+
+Note: npm publish requires setting `NPM_TOKEN` in GitHub Actions (release.published workflow already configured).
