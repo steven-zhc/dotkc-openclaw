@@ -123,7 +123,7 @@ dotkc run --spec-file ./dotkc.spec -- <cmd> [args...]
 ```
 
 Guardrails:
-- Requires `DOTKC_NO_LEAK=1` on the OpenClaw host
+- No-leak is enforced by the plugin (it sets `DOTKC_NO_LEAK=1` for dotkc subprocesses)
 - Requires plugin config `commandAllowlist[]`
 - Rejects unsafe `specFile` / `cwd` paths (relative only; no traversal)
 - Fail-closed leak detection before returning any output
@@ -151,7 +151,7 @@ Design workflows so secrets are injected into child processes, not displayed.
 </div>
 
 <div class="callout">
-<strong>Required for OpenClaw hosts:</strong> set <code>DOTKC_NO_LEAK=1</code> in the Gateway environment. This makes dotkc refuse operations that would print raw secret values.
+<strong>No-leak default:</strong> this plugin enforces <code>DOTKC_NO_LEAK=1</code> when spawning dotkc, so you do not need to set it in the Gateway environment.
 </div>
 
 ## Troubleshooting

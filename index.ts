@@ -26,7 +26,9 @@ function runDotkc({ dotkcBin, args, stdinText, cwd }: { dotkcBin: string; args: 
     }
     const p = spawn(spawnCmd, spawnArgs, {
       stdio: ['pipe', 'pipe', 'pipe'],
-      env: process.env,
+      // Enforce no-leak by default: make dotkc refuse printing raw values.
+      // Users should not need to configure DOTKC_NO_LEAK in the Gateway env.
+      env: { ...process.env, DOTKC_NO_LEAK: '1' },
       cwd: cwd ?? process.cwd(),
     });
 
@@ -338,24 +340,7 @@ export default function dotkcPlugin(api: any) {
         cwd: Type.Optional(Type.String({ description: 'Working directory (relative, no traversal).' })),
       }),
       async execute(_id: string, params: any) {
-        if (String(process.env.DOTKC_NO_LEAK ?? '') !== '1') {
-          return {
-            content: [
-              {
-                type: 'text',
-                text: JSON.stringify(
-                  {
-                    ok: false,
-                    code: 2,
-                    error: 'DOTKC_NO_LEAK_REQUIRED: dotkc_run requires DOTKC_NO_LEAK=1 on the OpenClaw host',
-                  },
-                  null,
-                  2,
-                ),
-              },
-            ],
-          };
-        }
+        // DOTKC_NO_LEAK is enforced by the plugin when spawning dotkc.
 
         const specFile = params?.specFile || cfg?.specFile || './dotkc.spec';
         const command = params?.command;

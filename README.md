@@ -56,7 +56,7 @@ Note: this plugin bundles `dotkc` as a dependency, so you do not need to install
 
 ## Security stance
 
-Required on OpenClaw hosts: set `DOTKC_NO_LEAK=1` (enforces no-leak mode: blocks `dotkc get` and `--unsafe-values`).
+No-leak default: the plugin enforces `DOTKC_NO_LEAK=1` for dotkc subprocesses (blocks `dotkc get` and `--unsafe-values`).
 
 - This plugin is designed to **avoid secrets entering model context**.
 - `dotkc_inspect` uses `dotkc run --openclaw` and is expected to be **redacted**.

@@ -1,7 +1,7 @@
 {
   "id": "dotkc",
   "label": "dotkc",
-  "description": "dotkc integration: safe secrets inspection + env-injection workflows for OpenClaw (requires DOTKC_NO_LEAK=1)",
+  "description": "dotkc integration: safe secrets inspection + env-injection workflows for OpenClaw (no-leak enforced by plugin)",
   "kind": "tools",
   "configSchema": {
     "type": "object",
